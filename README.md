@@ -1,0 +1,2 @@
+# PremScore
+Scottish Premiership Hockey
