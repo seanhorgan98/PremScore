@@ -7,6 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddCors((setup) => 
+    setup.AddPolicy("default", (options) => 
+        options.AllowAnyHeader().AllowAnyOrigin()));
+
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 25));
 builder.Services.AddDbContext<TeamsDbContext>(options => options
     .UseMySql(builder.Configuration.GetConnectionString("PremScoreDbConnectionString"), serverVersion)
@@ -22,6 +27,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("default");
 
 app.UseHttpsRedirection();
 
