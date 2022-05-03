@@ -20,7 +20,7 @@ public class TeamsController : Controller
     [HttpGet]
     public async Task<IActionResult> GetAllTeams()
     {
-        var teams = await _teamsDbContext.Teams.ToListAsync();
+        var teams = await _teamsDbContext.Teams.OrderBy(x => x.LeaguePosition).ToListAsync();
         return Ok(teams);
     }
     
@@ -49,5 +49,59 @@ public class TeamsController : Controller
         await _teamsDbContext.Teams.AddAsync(team);
         await _teamsDbContext.SaveChangesAsync();
         return CreatedAtAction(nameof(GetTeam), new { id = team.Id }, team);
+    }
+    
+    // Update Single Team
+    [HttpPut]
+    [Route("{id:guid}")]
+    public async Task<IActionResult> UpdateTeam([FromRoute] Guid id, [FromBody] Team team)
+    {
+        var existingTeam = await _teamsDbContext.Teams.FirstOrDefaultAsync(x => x.Id == id);
+        if (existingTeam != null)
+        {
+            existingTeam.TeamName = team.TeamName;
+            existingTeam.Sponsor = team.Sponsor;
+            existingTeam.SeasonPlayed = team.SeasonPlayed;
+            existingTeam.SeasonWon = team.SeasonWon;
+            existingTeam.SeasonDrawn = team.SeasonDrawn;
+            existingTeam.SeasonLost = team.SeasonLost;
+            existingTeam.SeasonGoalsFor = team.SeasonGoalsFor;
+            existingTeam.SeasonGoalsAgainst = team.SeasonGoalsAgainst;
+            existingTeam.SeasonGoalDifference = team.SeasonGoalDifference;
+            existingTeam.SeasonPoints = team.SeasonPoints;
+            existingTeam.TotalPlayed = team.TotalPlayed;
+            existingTeam.TotalWon = team.TotalWon;
+            existingTeam.TotalDrawn = team.TotalDrawn;
+            existingTeam.TotalLost = team.TotalLost;
+            existingTeam.TotalGoalsFor = team.TotalGoalsFor;
+            existingTeam.TotalGoalsAgainst = team.TotalGoalsAgainst;
+            existingTeam.TotalGoalDifference = team.TotalGoalDifference;
+            existingTeam.TotalPoints = team.TotalPoints;
+            existingTeam.LeaguePosition = team.LeaguePosition;
+            await _teamsDbContext.SaveChangesAsync();
+            return Ok(existingTeam);
+        }
+        else
+        {
+            return NotFound("Team not found in database.");
+        }
+    }
+    
+    // Delete Single Team
+    [HttpDelete]
+    [Route("{id:guid}")]
+    public async Task<IActionResult> DeleteTeam([FromRoute] Guid id)
+    {
+        var existingTeam = await _teamsDbContext.Teams.FirstOrDefaultAsync(x => x.Id == id);
+        if (existingTeam != null)
+        {
+            _teamsDbContext.Remove(existingTeam);
+            await _teamsDbContext.SaveChangesAsync();
+            return Ok(existingTeam);
+        }
+        else
+        {
+            return NotFound("Team not found in database.");
+        }
     }
 }

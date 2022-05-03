@@ -1,16 +1,26 @@
 <h1>Scottish Premiership</h1>
 
-<table>
-<thead>
+<table class="md-table">
+<thead class="md-table-header">
+  <th>Pos</th>
   <th>Team</th>
-  <th>Sponsor</th>
-  <th>Points</th>
+  <th>Pl</th>
+  <th>W</th>
+  <th>D</th>
+  <th>L</th>
+  <th>GD</th>
+  <th>Pts</th>
 </thead>
 <tbody>
-<tr *ngFor="let team of teams">
+<tr *ngFor="let team of teams; let i = index">
+  <td>{{ team.leaguePosition }}</td>
   <td>{{ team.teamName }}</td>
-  <td>{{ team.sponsor }}</td>
-  <td>{{ team.points }}</td>
+  <td>{{ team.seasonPlayed }}</td>
+  <td>{{ team.seasonWon }}</td>
+  <td>{{ team.seasonDrawn }}</td>
+  <td>{{ team.seasonLost }}</td>
+  <td>{{ team.seasonGoalDifference }}</td>
+  <td>{{ team.seasonPoints }}</td>
 </tr>
 </tbody>
 </table>

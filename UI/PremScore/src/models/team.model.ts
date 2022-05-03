@@ -2,5 +2,21 @@ export interface Team {
   id: string,
   teamName: string,
   sponsor: string,
-  points: number
+  seasonPlayed: number,
+  seasonWon: number,
+  seasonDrawn: number,
+  seasonLost: number,
+  seasonGoalsFor: number,
+  seasonGoalsAgainst: number,
+  seasonGoalDifference: number,
+  seasonPoints: number,
+  totalPlayed: number,
+  totalWon: number,
+  totalDrawn: number,
+  totalLost: number,
+  totalGoalsFor: number,
+  totalGoalsAgainst: number,
+  totalGoalDifference: number,
+  totalPoints: number,
+  leaguePosition: number
 }
