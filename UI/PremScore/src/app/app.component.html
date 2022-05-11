@@ -13,31 +13,41 @@
   </svg>
 </div>
 
-<table class="md-table">
-  <thead class="md-table-header">
-    <th>Pos</th>
-    <th>Team</th>
-    <th>Pl</th>
-    <th>W</th>
-    <th>D</th>
-    <th>L</th>
-    <th>GD</th>
-    <th>Pts</th>
-  </thead>
-  <tbody>
-  <tr *ngFor="let team of teams; let i = index" class="table-row">
-    <td>{{ team.leaguePosition }}</td>
-    <td>{{ team.teamName }}</td>
-    <td>{{ team.seasonPlayed }}</td>
-    <td>{{ team.seasonWon }}</td>
-    <td>{{ team.seasonDrawn }}</td>
-    <td>{{ team.seasonLost }}</td>
-    <td>{{ team.seasonGoalDifference }}</td>
-    <td>{{ team.seasonPoints }}</td>
-  </tr>
-  </tbody>
-</table>
+<div class="container">
+  <div class="Results results-center">
+    <h6 style="padding-top: 1em">Gameweek 1</h6>
+    <h3>Premiership</h3>
+    <p>Saturday 14th May</p>
 
+  </div>
+
+  <div class="Table">
+    <table class="md-table">
+      <thead class="md-table-header">
+      <th>Pos</th>
+      <th>Team</th>
+      <th>Pl</th>
+      <th>W</th>
+      <th>D</th>
+      <th>L</th>
+      <th>GD</th>
+      <th>Pts</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let team of teams; let i = index" class="table-row">
+        <td>{{ team.leaguePosition }}</td>
+        <td>{{ team.teamName }}</td>
+        <td>{{ team.seasonPlayed }}</td>
+        <td>{{ team.seasonWon }}</td>
+        <td>{{ team.seasonDrawn }}</td>
+        <td>{{ team.seasonLost }}</td>
+        <td>{{ team.seasonGoalDifference }}</td>
+        <td>{{ team.seasonPoints }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <div class="wrap-centre wrap-padding">
   <svg width="70%" height="4">

@@ -5,6 +5,28 @@ h1 {
   text-align: center;
 }
 
+.container {  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 10px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "Results Table Table Table"
+    "Results Table Table Table";
+  justify-content: start;
+}
+
+.Results {
+  grid-area: Results;
+  height: 40em;
+  background-color: rgb(251,251,251);
+}
+
+.Table {
+  grid-area: Table;
+}
+
+
 /* Color Theme Swatches in RGBA */
 .JCM-Fold-1-rgba { color: rgba(217, 26, 42, 1); }
 .JCM-Fold-2-rgba { color: rgba(166, 36, 60, 1); }
@@ -27,7 +49,7 @@ i {
 }
 
 .md-table {
-  min-width: 70%;
+  min-width: 95%;
   border-collapse: collapse;
   margin: auto;
 }
@@ -48,7 +70,14 @@ i {
 .wrap-centre {
   display: flex;
   justify-content: center;
-  align-items: center;
+}
+
+.results-center {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  text-align: center;
 }
 
 .wrap-padding {
