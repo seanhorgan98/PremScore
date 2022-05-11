@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from "@angular/common/http";
 import { NavbarComponent } from './navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MiniFixtureComponent } from './mini-fixture/mini-fixture.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    MiniFixtureComponent
   ],
   imports: [
     BrowserModule,
