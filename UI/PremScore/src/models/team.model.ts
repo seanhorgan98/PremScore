@@ -1,6 +1,7 @@
 export interface Team {
   id: string,
   teamName: string,
+  abbreviation: string,
   sponsor: string,
   seasonPlayed: number,
   seasonWon: number,

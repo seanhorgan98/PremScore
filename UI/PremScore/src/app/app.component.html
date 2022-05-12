@@ -1,7 +1,5 @@
 <app-navbar></app-navbar>
 
-
-
 <div class="wrap-centre wrap-padding">
   <svg width="70%" height="4">
     <defs>
@@ -20,7 +18,11 @@
     <h6 style="padding-top: 1em">Gameweek 1</h6>
     <h3>Premiership</h3>
     <p>Saturday 14th May</p>
-    <app-mini-fixture></app-mini-fixture>
+    <!-- *ngFor each fixture call these with {{ match.teamOne }} etc-->
+    <app-mini-fixture teamOneAbbr="HIL" time="14:30" teamTwoAbbr="UDD" teamNameOne="Hillhead" teamNameTwo="Uddingston"></app-mini-fixture>
+    <app-mini-fixture teamOneAbbr="GRA" time="15:00" teamTwoAbbr="WST" teamNameOne="Grange" teamNameTwo="Western Wildcats"></app-mini-fixture>
+    <app-mini-fixture teamOneAbbr="IVL" time="15:30" teamTwoAbbr="DFL" teamNameOne="Inverleith" teamNameTwo="Dunfermline Carnegie"></app-mini-fixture>
+    <a class="fixture-bottom" href="#">See all Fixtures...</a>
   </div>
 
   <div class="Table">
@@ -46,7 +48,7 @@
         <td>{{ team.seasonDrawn }}</td>
         <td>{{ team.seasonLost }}</td>
         <td>{{ team.seasonGoalDifference }}</td>
-        <td>{{ team.seasonPoints }}</td>
+        <td style="font-weight: bold;">{{ team.seasonPoints }}</td>
       </tr>
       </tbody>
     </table>

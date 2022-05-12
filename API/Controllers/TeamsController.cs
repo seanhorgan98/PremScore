@@ -60,6 +60,7 @@ public class TeamsController : Controller
         if (existingTeam != null)
         {
             existingTeam.TeamName = team.TeamName;
+            existingTeam.Abbreviation = team.Abbreviation;
             existingTeam.Sponsor = team.Sponsor;
             existingTeam.SeasonPlayed = team.SeasonPlayed;
             existingTeam.SeasonWon = team.SeasonWon;

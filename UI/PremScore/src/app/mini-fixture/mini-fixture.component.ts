@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-mini-fixture',
@@ -6,6 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mini-fixture.component.css']
 })
 export class MiniFixtureComponent implements OnInit {
+  @Input()
+  teamOneAbbr: string = "";
+  @Input()
+  teamTwoAbbr: string = "";
+  @Input()
+  time: string = "00:00";
+  @Input()
+  teamNameOne: string = "";
+  @Input()
+  teamNameTwo: string = "";
 
   constructor() { }
 

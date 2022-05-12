@@ -8,6 +8,7 @@ public class Team
     public Guid Id { get; set; }
 
     public string TeamName { get; set; }
+    public string Abbreviation { get; set; }
     public string Sponsor { get; set; }
     public int SeasonPlayed { get; set; }
     public int SeasonWon { get; set; }

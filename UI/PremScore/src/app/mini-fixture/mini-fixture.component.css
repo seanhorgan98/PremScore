@@ -1,17 +1,29 @@
 .background-box {
   background-color: white;
-  width: 100%;
+  border-radius: 5px;
+  border: 1px solid rgb(67, 7, 74);
   display: flex;
-  flex-direction: row;
-  align-content: center;
-  text-align: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
+}
+
+.background-box:hover {
+  cursor: pointer;
+  background: linear-gradient(90deg, rgba(43,70,111,1) 0%, rgba(43,70,111,1) 0%, rgba(166,36,60,1) 100%);
+  color: white;
 }
 
 .team {
+  padding-top: 2px;
   font-weight: bold;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 .time {
-  border: 1px solid rgb(10, 10, 10);
+  color: white;
+  font-weight: bold;
+  background-color: rgb(67, 7, 74);
+  margin-left: 1em;
+  margin-right: 1em;
+  padding: 2px;
 }
