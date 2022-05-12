@@ -1,5 +1,7 @@
 <app-navbar></app-navbar>
 
+
+
 <div class="wrap-centre wrap-padding">
   <svg width="70%" height="4">
     <defs>
@@ -25,6 +27,7 @@
     <table class="md-table">
       <thead class="md-table-header">
       <th>Pos</th>
+      <th></th>
       <th>Team</th>
       <th>Pl</th>
       <th>W</th>
@@ -36,6 +39,7 @@
       <tbody>
       <tr *ngFor="let team of teams; let i = index" class="table-row">
         <td>{{ team.leaguePosition }}</td>
+        <td><img src="assets/Logos/{{ team.teamName }}.png" alt="logo" width="45em" height="45em"></td>
         <td>{{ team.teamName }}</td>
         <td>{{ team.seasonPlayed }}</td>
         <td>{{ team.seasonWon }}</td>
