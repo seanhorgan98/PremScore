@@ -1,0 +1,9 @@
+.wrap-padding {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.wrap-centre {
+  display: flex;
+  justify-content: center;
+}

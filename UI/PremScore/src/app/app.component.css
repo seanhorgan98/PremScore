@@ -75,7 +75,6 @@ i {
 .results-center {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   align-content: center;
   text-align: center;
 }
@@ -88,8 +87,4 @@ i {
 .table-row {
   margin-top: 50px;
   border-bottom: 1px solid rgb(251,251,251);
-}
-
-.fixture-bottom {
-
 }

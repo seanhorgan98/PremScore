@@ -1,7 +1,5 @@
 .background-box {
   background-color: white;
-  border-radius: 5px;
-  border: 1px solid rgb(67, 7, 74);
   display: flex;
   justify-content: space-evenly;
 }
@@ -14,16 +12,19 @@
 
 .team {
   padding-top: 2px;
+  padding-bottom: 2px;
   font-weight: bold;
-  margin-left: 1em;
-  margin-right: 1em;
+  margin-left: 1px;
+  margin-right: 1px;
+  width: 35%;
 }
 
 .time {
   color: white;
   font-weight: bold;
   background-color: rgb(67, 7, 74);
-  margin-left: 1em;
-  margin-right: 1em;
+  margin-left: 1px;
+  margin-right: 1px;
   padding: 2px;
+  width: 25%;
 }

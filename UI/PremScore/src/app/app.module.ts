@@ -7,12 +7,14 @@ import { HttpClientModule } from "@angular/common/http";
 import { NavbarComponent } from './navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MiniFixtureComponent } from './mini-fixture/mini-fixture.component';
+import { LinebreakComponent } from './linebreak/linebreak.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    MiniFixtureComponent
+    MiniFixtureComponent,
+    LinebreakComponent
   ],
   imports: [
     BrowserModule,
