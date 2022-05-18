@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {TeamsService} from "./service/teams.service";
+import {FixtureService} from "./service/fixture.service";
 import {Team} from "../models/team.model";
+import {Fixture} from "../models/fixture.model";
 
 @Component({
   selector: 'app-root',
@@ -10,13 +12,15 @@ import {Team} from "../models/team.model";
 export class AppComponent implements OnInit{
   title = 'PremScore';
   teams: Team[] = [];
+  upcomingFixtures: Fixture[] = [];
 
-  constructor(private teamService: TeamsService) {
+  constructor(private teamService: TeamsService, private fixtureService: FixtureService) {
 
   }
 
   ngOnInit(): void {
     this.getAllTeams();
+    this.getUpcomingFixtures();
   }
 
   getAllTeams() {
@@ -24,6 +28,15 @@ export class AppComponent implements OnInit{
       .subscribe(
         response => {
           this.teams = response;
+        }
+      )
+  }
+
+  getUpcomingFixtures() {
+    this.fixtureService.getUpcomingFixtures()
+      .subscribe(
+        response => {
+          this.upcomingFixtures = response;
         }
       )
   }

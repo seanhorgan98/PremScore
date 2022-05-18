@@ -18,10 +18,9 @@
     <h6 style="padding-top: 1em">Upcoming Matches</h6>
     <h3>Premiership</h3>
     <p>Saturday 14th May</p>
-    <!-- *ngFor each fixture call these with {{ match.teamOne }} etc-->
-    <app-mini-fixture teamOneAbbr="HIL" time="14:30" teamTwoAbbr="UDD" teamNameOne="Hillhead" teamNameTwo="Uddingston"></app-mini-fixture>
-    <app-mini-fixture teamOneAbbr="GRA" time="15:00" teamTwoAbbr="WST" teamNameOne="Grange" teamNameTwo="Western Wildcats"></app-mini-fixture>
-    <app-mini-fixture teamOneAbbr="IVL" time="15:30" teamTwoAbbr="MON" teamNameOne="Inverleith" teamNameTwo="Dunfermline Carnegie"></app-mini-fixture>
+    <div *ngFor="let fixture of upcomingFixtures;">
+      <app-mini-fixture teamOneAbbr="HIL" time="14:30" teamTwoAbbr="UDD" teamNameOne="{{ fixture.}}" teamNameTwo="Uddingston"></app-mini-fixture>
+    </div>
     <a href="#">See all Fixtures...</a>
   </div>
 

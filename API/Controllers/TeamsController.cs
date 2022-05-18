@@ -9,28 +9,28 @@ namespace API.Controllers;
 [Route("api/[controller]")]
 public class TeamsController : Controller
 {
-    private readonly TeamsDbContext _teamsDbContext;
+    private readonly ApplicationDbContext _context;
 
-    public TeamsController(TeamsDbContext teamsDbContext)
+    public TeamsController(ApplicationDbContext teamsDbContext)
     {
-        _teamsDbContext = teamsDbContext;
+        _context = teamsDbContext;
     }
     
     // Get all Teams
     [HttpGet]
     public async Task<IActionResult> GetAllTeams()
     {
-        var teams = await _teamsDbContext.Teams.OrderBy(x => x.LeaguePosition).ToListAsync();
+        var teams = await _context.Teams.OrderBy(x => x.LeaguePosition).ToListAsync();
         return Ok(teams);
     }
     
     // GET Single Team
     [HttpGet]
-    [Route("{id:guid}")]
+    [Route("{id:int}")]
     [ActionName("GetTeam")]
-    public async Task<IActionResult> GetTeam([FromRoute] Guid id)
+    public async Task<IActionResult> GetTeam([FromRoute] int id)
     {
-        var team = await _teamsDbContext.Teams.FirstOrDefaultAsync(x => x.Id == id);
+        var team = await _context.Teams.FirstOrDefaultAsync(x => x.Id == id);
         if (team != null)
         {
             return Ok(team);
@@ -45,18 +45,17 @@ public class TeamsController : Controller
     [HttpPost]
     public async Task<IActionResult> AddTeam([FromBody] Team team)
     {
-        team.Id = Guid.NewGuid();
-        await _teamsDbContext.Teams.AddAsync(team);
-        await _teamsDbContext.SaveChangesAsync();
+        await _context.Teams.AddAsync(team);
+        await _context.SaveChangesAsync();
         return CreatedAtAction(nameof(GetTeam), new { id = team.Id }, team);
     }
     
     // Update Single Team
     [HttpPut]
-    [Route("{id:guid}")]
-    public async Task<IActionResult> UpdateTeam([FromRoute] Guid id, [FromBody] Team team)
+    [Route("{id:int}")]
+    public async Task<IActionResult> UpdateTeam([FromRoute] int id, [FromBody] Team team)
     {
-        var existingTeam = await _teamsDbContext.Teams.FirstOrDefaultAsync(x => x.Id == id);
+        var existingTeam = await _context.Teams.FirstOrDefaultAsync(x => x.Id == id);
         if (existingTeam != null)
         {
             existingTeam.TeamName = team.TeamName;
@@ -79,7 +78,7 @@ public class TeamsController : Controller
             existingTeam.TotalGoalDifference = team.TotalGoalDifference;
             existingTeam.TotalPoints = team.TotalPoints;
             existingTeam.LeaguePosition = team.LeaguePosition;
-            await _teamsDbContext.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return Ok(existingTeam);
         }
         else
@@ -90,14 +89,14 @@ public class TeamsController : Controller
     
     // Delete Single Team
     [HttpDelete]
-    [Route("{id:guid}")]
-    public async Task<IActionResult> DeleteTeam([FromRoute] Guid id)
+    [Route("{id:int}")]
+    public async Task<IActionResult> DeleteTeam([FromRoute] int id)
     {
-        var existingTeam = await _teamsDbContext.Teams.FirstOrDefaultAsync(x => x.Id == id);
+        var existingTeam = await _context.Teams.FirstOrDefaultAsync(x => x.Id == id);
         if (existingTeam != null)
         {
-            _teamsDbContext.Remove(existingTeam);
-            await _teamsDbContext.SaveChangesAsync();
+            _context.Remove(existingTeam);
+            await _context.SaveChangesAsync();
             return Ok(existingTeam);
         }
         else

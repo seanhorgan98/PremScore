@@ -13,7 +13,7 @@ builder.Services.AddCors((setup) =>
         options.AllowAnyHeader().AllowAnyOrigin()));
 
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 25));
-builder.Services.AddDbContext<TeamsDbContext>(options => options
+builder.Services.AddDbContext<ApplicationDbContext>(options => options
     .UseMySql(builder.Configuration.GetConnectionString("PremScoreDbConnectionString"), serverVersion)
     .LogTo(Console.WriteLine, LogLevel.Information)
     .EnableSensitiveDataLogging()
